@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sgraph="http://www.yakindu.org/sct/sgraph/2.0.0">
-  <sgraph:Statechart xmi:id="_6JPnUBRtEeuYNsfHSkY3tw" specification="// Use the event driven execution model.&#xA;// Switch to cycle based behavior&#xA;// by specifying '@CycleBased(200)'.&#xA;@EventDriven&#xD;&#xA;&#xD;&#xA;// Use @SuperSteps(yes) to enable&#xA;// super step semantics.&#xA;@SuperSteps(no)&#xD;&#xA;&#xD;&#xA;interface:&#xA;&#x9;in event listar_IS_nivel_abrangencia&#xA;&#x9;&#xA;interface usuario:&#xA;&#x9;in event selecionaAtualizar&#xA;&#x9;in event selecionaTermos&#xA;&#x9;in event selecionaEquipe&#xA;&#x9;in event selecionaFinalizar&#xA;&#x9;in event removerMembroEquipe&#xA;&#x9;in event adicionarMembroEquipe&#xA;&#x9;in event adicionarIrregularidade&#xA;&#x9;in event removerIrregularidade&#xA;&#x9;in event selecionaIrregularidade&#xA;&#x9;in event salvar&#xA;&#x9;in event voltar&#xA;&#xA;interface inspecaoSanitaria:&#xA;&#x9;var status: string&#xA;&#x9;var responsavelLegal: boolean&#xA;&#x9;var irregularidade: boolean" name="Statechart">
+  <sgraph:Statechart xmi:id="_6JPnUBRtEeuYNsfHSkY3tw" specification="// Use the event driven execution model.&#xA;// Switch to cycle based behavior&#xA;// by specifying '@CycleBased(200)'.&#xA;@EventDriven&#xD;&#xA;&#xD;&#xA;// Use @SuperSteps(yes) to enable&#xA;// super step semantics.&#xA;@SuperSteps(no)&#xD;&#xA;&#xD;&#xA;interface:&#xA;&#x9;in event listar_IS_nivel_abrangencia&#xA;&#x9;&#xA;interface usuario:&#xA;&#x9;in event selecionaAtualizar&#xA;&#x9;in event selecionaTermos&#xA;&#x9;in event selecionaEquipe&#xA;&#x9;in event selecionaFinalizar&#xA;&#x9;in event removerMembroEquipe&#xA;&#x9;in event adicionarMembroEquipe&#xA;&#x9;in event adicionarIrregularidade&#xA;&#x9;in event removerIrregularidade&#xA;&#x9;in event selecionaIrregularidade&#xA;&#x9;in event salvar&#xA;&#x9;in event voltar&#xA;&#xA;interface inspecaoSanitaria:&#xA;&#x9;var status: string&#xA;&#x9;var responsavelLegal: boolean&#xA;&#x9;var irregularidade: boolean&#xA;&#x9;var membrosEquipeIS: boolean" name="Statechart">
     <regions xmi:id="_6Jp3AxRtEeuYNsfHSkY3tw" name="main region">
       <vertices xsi:type="sgraph:Entry" xmi:id="_6Jp3BBRtEeuYNsfHSkY3tw">
         <outgoingTransitions xmi:id="_QlG44Be6Eeu4B79fp4DW_Q" target="_QlHgBBe6Eeu4B79fp4DW_Q"/>
@@ -137,8 +137,8 @@
             <outgoingTransitions xmi:id="_tQDFbxe4Eeu4B79fp4DW_Q" specification="else" target="_tQDFhhe4Eeu4B79fp4DW_Q"/>
             <outgoingTransitions xmi:id="_tQDFcRe4Eeu4B79fp4DW_Q" specification="[&#xD;&#xA;&#x9;inspecaoSanitaria.status == 'Em Edição' ||&#xD;&#xA;&#x9;inspecaoSanitaria.status == 'Programada'&#xD;&#xA;]" target="_tQDFfxe4Eeu4B79fp4DW_Q"/>
           </vertices>
-          <vertices xsi:type="sgraph:State" xmi:id="_tQDFfxe4Eeu4B79fp4DW_Q" name="Verificar_responsavel_legal" incomingTransitions="_tQDFcRe4Eeu4B79fp4DW_Q">
-            <outgoingTransitions xmi:id="_3WNc8Be4Eeu4B79fp4DW_Q" specification="[inspecaoSanitaria.responsavelLegal == true]" target="_0w6OoBe4Eeu4B79fp4DW_Q"/>
+          <vertices xsi:type="sgraph:State" xmi:id="_tQDFfxe4Eeu4B79fp4DW_Q" name="Verificar_Responsavel_legal_e_equipe_IS" incomingTransitions="_tQDFcRe4Eeu4B79fp4DW_Q">
+            <outgoingTransitions xmi:id="_3WNc8Be4Eeu4B79fp4DW_Q" specification="[&#xD;&#xA;&#x9;inspecaoSanitaria.responsavelLegal == true &amp;&amp; &#xD;&#xA;&#x9;inspecaoSanitaria.membrosEquipeIS == true&#xD;&#xA;]" target="_0w6OoBe4Eeu4B79fp4DW_Q"/>
           </vertices>
           <vertices xsi:type="sgraph:Exit" xmi:id="_tQDFhhe4Eeu4B79fp4DW_Q" name="status_invalido" incomingTransitions="_tQDFbxe4Eeu4B79fp4DW_Q"/>
           <vertices xsi:type="sgraph:FinalState" xmi:id="_tQDFhxe4Eeu4B79fp4DW_Q" incomingTransitions="_tQDFgRe4Eeu4B79fp4DW_Q"/>
@@ -1148,7 +1148,7 @@
           <styles xsi:type="notation:ShapeStyle" xmi:id="_tQDFWRe4Eeu4B79fp4DW_Q" fontName="Verdana" fillColor="15720400" lineColor="12632256"/>
           <styles xsi:type="notation:FontStyle" xmi:id="_tQDFWhe4Eeu4B79fp4DW_Q"/>
           <styles xsi:type="notation:BooleanValueStyle" xmi:id="_tQDFWxe4Eeu4B79fp4DW_Q" name="isHorizontal" booleanValue="true"/>
-          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_tQDFXBe4Eeu4B79fp4DW_Q" x="75" y="152" width="210" height="53"/>
+          <layoutConstraint xsi:type="notation:Bounds" xmi:id="_tQDFXBe4Eeu4B79fp4DW_Q" x="75" y="152" width="305" height="53"/>
         </children>
         <children xmi:id="_tQDFXRe4Eeu4B79fp4DW_Q" type="Exit" element="_tQDFhhe4Eeu4B79fp4DW_Q">
           <children xmi:id="_tQDFXhe4Eeu4B79fp4DW_Q" type="BorderItemLabelContainer">
@@ -1228,7 +1228,7 @@
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_tQDsZRe4Eeu4B79fp4DW_Q" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_tQDsZhe4Eeu4B79fp4DW_Q" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_tQDsZxe4Eeu4B79fp4DW_Q" points="[6, -2, -9, -98]$[6, 87, -9, -9]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_tQDsZxe4Eeu4B79fp4DW_Q" points="[6, -2, -38, -98]$[6, 87, -38, -9]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_tQDsaBe4Eeu4B79fp4DW_Q" id="(0.0,1.0)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_tQDsaRe4Eeu4B79fp4DW_Q" id="(0.30337078651685395,0.16981132075471697)"/>
     </edges>
@@ -1245,11 +1245,11 @@
     <edges xmi:id="_3WOEABe4Eeu4B79fp4DW_Q" type="Transition" element="_3WNc8Be4Eeu4B79fp4DW_Q" source="_tQDFURe4Eeu4B79fp4DW_Q" target="_0w61sBe4Eeu4B79fp4DW_Q">
       <children xsi:type="notation:DecorationNode" xmi:id="_3WOEBBe4Eeu4B79fp4DW_Q" type="TransitionExpression">
         <styles xsi:type="notation:ShapeStyle" xmi:id="_3WOrEBe4Eeu4B79fp4DW_Q"/>
-        <layoutConstraint xsi:type="notation:Location" xmi:id="_3WOrERe4Eeu4B79fp4DW_Q" x="-16" y="-157"/>
+        <layoutConstraint xsi:type="notation:Location" xmi:id="_3WOrERe4Eeu4B79fp4DW_Q" y="-182"/>
       </children>
       <styles xsi:type="notation:ConnectorStyle" xmi:id="_3WOEARe4Eeu4B79fp4DW_Q" routing="Rectilinear" lineColor="4210752"/>
       <styles xsi:type="notation:FontStyle" xmi:id="_3WOEAxe4Eeu4B79fp4DW_Q" fontName="Verdana"/>
-      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_3WOEAhe4Eeu4B79fp4DW_Q" points="[13, 53, -37, -77]$[13, 125, -37, -5]"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints" xmi:id="_3WOEAhe4Eeu4B79fp4DW_Q" points="[-7, 53, -37, -77]$[-7, 125, -37, -5]"/>
       <sourceAnchor xsi:type="notation:IdentityAnchor" xmi:id="_3WPSIBe4Eeu4B79fp4DW_Q" id="(0.21428571428571427,0.0)"/>
       <targetAnchor xsi:type="notation:IdentityAnchor" xmi:id="_3WP5MBe4Eeu4B79fp4DW_Q" id="(0.2974683544303797,0.09433962264150944)"/>
     </edges>
